@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jéssica Dumont — Estética Avançada & Tricologia | Sete Lagoas</title>
+<meta name="description" content="Estética avançada e tratamentos capilares personalizados com a biomédica Jéssica Dumont (CRBM 17.744). Protocolos exclusivos, diagnóstico criterioso e acompanhamento próximo em Sete Lagoas — MG.">
+<meta name="theme-color" content="#E4DDD3">
+
+<!-- ============ FONTS ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ============ ICONS ============ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+
+<!-- ============ AOS (Animate On Scroll) ============ -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!-- ============ SWIPER ============ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<!-- ============ TAILWIND (Play CDN) ============ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Plus Jakarta Sans', 'sans-serif'],
+          serif: ['Cormorant Garamond', 'serif'],
+          mono: ['Space Mono', 'monospace'],
+        },
+        colors: {
+          cream:     '#FAF6EF',
+          sand:      '#E4DDD3',
+          champagne: '#EFE7D8',
+          gold:      '#B18E4E',
+          goldl:     '#D4B87E',
+          goldd:     '#8C6E3A',
+          ink:       '#2B271F',
+          ink2:      '#4A4236',
+          muted:     '#8B8172',
+          line:      'rgba(43,39,31,0.09)',
+        },
+        letterSpacing: { tightest: '-0.04em' },
+      }
+    }
+  }
+</script>
+
+<style>
+  /* ================= BASE ================= */
+  :root{
+    --gx-1: 6%;  --gx-2: 28%; --gx-3: 62%; --gx-4: 94%;
+    --grid-color: rgba(43,39,31,0.05);
+    --beam-color: #C9A961;
+    --gold-grad: linear-gradient(120deg,#9A7B3F 0%,#E4CE97 42%,#B18E4E 68%,#8C6E3A 100%);
+  }
+  html,body{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  html{ overflow-x:clip; }
+  body{ font-family:'Inter',sans-serif; background:#FAF6EF; color:#2B271F; overflow-x:clip; position:relative; width:100%; }
+  h1,h2,h3,h4,h5,h6{ font-family:'Plus Jakarta Sans',sans-serif; }
+  ::selection{ background:#E9D7B4; color:#5C4A22; }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:#F0E9DE; }
+  ::-webkit-scrollbar-thumb{ background:#C9B98F; border-radius:20px; border:2px solid #F0E9DE; }
+  ::-webkit-scrollbar-thumb:hover{ background:#B18E4E; }
+
+  /* ================= GOLD HELPERS ================= */
+  .text-gold-gradient{
+    background:var(--gold-grad);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+  }
+  .bg-gold-grad{ background:var(--gold-grad); }
+  .serif-accent{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; }
+  .ff-mono{ font-family:'Space Mono',monospace; }
+
+  /* Hairline divider with gold node */
+  .rule-gold{ height:1px; background:linear-gradient(90deg,transparent,rgba(177,142,78,.55),transparent); }
+
+  /* ================= GRID LINES ================= */
+  .grid-line-v{ position:absolute; top:0; bottom:0; width:1px; background:var(--grid-color); z-index:0; }
+  .grid-line-h{ position:absolute; left:0; right:0; height:1px; background:var(--grid-color); z-index:0; }
+  .marker{ position:absolute; width:5px; height:5px; background:#B18E4E; z-index:30; opacity:0; animation:fade-in .6s ease-out 1.1s forwards; }
+
+  /* ================= BEAMS ================= */
+  @keyframes beam-h{ 0%{left:-200px;opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{left:100%;opacity:0} }
+  @keyframes beam-v{ 0%{top:-200px;opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{top:100%;opacity:0} }
+  .beam-h{ position:absolute; height:1px; width:200px; background:linear-gradient(90deg,transparent,var(--beam-color),transparent); z-index:10; opacity:0; }
+  .beam-v{ position:absolute; width:1px; height:200px; background:linear-gradient(180deg,transparent,var(--beam-color),transparent); z-index:10; opacity:0; }
+
+  /* ================= ENTRANCE ANIMATIONS ================= */
+  @keyframes reveal-up{ 0%{clip-path:inset(100% 0 0 0);transform:translateY(24px);opacity:0} 100%{clip-path:inset(0 0 0 0);transform:translateY(0);opacity:1} }
+  @keyframes fade-in{ from{opacity:0} to{opacity:1} }
+  @keyframes floaty{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+  @keyframes floaty-slow{ 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-22px) rotate(2deg)} }
+  @keyframes spin-slow{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
+  @keyframes pulse-ring{ 0%{transform:scale(.8);opacity:.6} 70%,100%{transform:scale(1.9);opacity:0} }
+
+  .animate-reveal{ opacity:0; animation:reveal-up 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .delay-100{ animation-delay:.12s } .delay-200{ animation-delay:.24s } .delay-300{ animation-delay:.36s }
+  .delay-400{ animation-delay:.48s } .delay-500{ animation-delay:.6s } .delay-700{ animation-delay:.8s }
+  .float{ animation:floaty 6s ease-in-out infinite; }
+  .float-slow{ animation:floaty-slow 9s ease-in-out infinite; }
+
+  /* Soft ambient gold blobs */
+  .blob{ position:absolute; border-radius:50%; filter:blur(70px); opacity:.55; z-index:0; pointer-events:none; }
+
+  /* ================= NAV ================= */
+  .nav-shell{ transition:background .5s ease, box-shadow .5s ease, backdrop-filter .5s ease, padding .4s ease; }
+  .nav-scrolled{ background:rgba(250,246,239,.82); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(43,39,31,.06),0 12px 40px -24px rgba(43,39,31,.35); }
+  .nav-link{ position:relative; }
+  .nav-link::after{ content:''; position:absolute; left:0; bottom:-4px; height:1px; width:0; background:var(--gold-grad); transition:width .35s cubic-bezier(.16,1,.3,1); }
+  .nav-link:hover::after{ width:100%; }
+
+  /* ================= BUTTONS ================= */
+  .btn-primary{ position:relative; overflow:hidden; }
+  .btn-primary .shine{ position:absolute; inset:0; transform:translateX(-120%); background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent); transition:transform .8s ease; }
+  .btn-primary:hover .shine{ transform:translateX(120%); }
+
+  /* ================= CARDS ================= */
+  .card-lift{ transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .5s ease; }
+  .card-lift:hover{ transform:translateY(-8px); }
+  .stat-bar{ transition:width .9s cubic-bezier(.16,1,.3,1), background .5s; }
+
+  /* Gallery image kenburns on hover */
+  .kb img{ transition:transform 1.4s cubic-bezier(.16,1,.3,1), filter .6s; }
+  .kb:hover img{ transform:scale(1.07); }
+
+  /* Section eyebrow label */
+  .eyebrow{ font-family:'Space Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.28em; color:#B18E4E; }
+
+  /* Marquee */
+  .marquee-track{ display:flex; width:max-content; animation:marquee 34s linear infinite; }
+  @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-wrap:hover .marquee-track{ animation-play-state:paused; }
+
+  /* AOS default softening */
+  [data-aos]{ pointer-events:none; }
+  [data-aos].aos-animate{ pointer-events:auto; }
+
+  /* Swiper tweaks */
+  .swiper-button-next,.swiper-button-prev{ color:#B18E4E; }
+  .swiper-pagination-bullet{ background:#B18E4E; opacity:.3; }
+  .swiper-pagination-bullet-active{ opacity:1; width:22px; border-radius:4px; }
+
+  /* Floating whatsapp */
+  .wa-fab{ box-shadow:0 12px 30px -8px rgba(37,211,102,.55); }
+
+  /* Decorative rotating ring for monogram */
+  .ring-rotate{ animation:spin-slow 24s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; }
+  }
+</style>
+</head>
+
+<body class="bg-cream text-ink antialiased relative">
+
+<!-- ============ AMBIENT BACKGROUND BLOBS ============ -->
+<div class="blob bg-goldl" style="width:520px;height:520px;top:-120px;right:-140px;opacity:.28"></div>
+<div class="blob bg-sand" style="width:600px;height:600px;bottom:10%;left:-200px;opacity:.5"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header id="nav" class="nav-shell fixed top-0 left-0 right-0 z-[100] py-4">
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[4%] flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="relative flex items-center justify-center w-11 h-11 rounded-full border border-gold/40">
+        <span class="serif-accent text-2xl leading-none text-gold-gradient" style="font-style:normal;letter-spacing:-.04em">jd</span>
+      </span>
+      <span class="flex flex-col leading-none">
+        <span class="font-display font-semibold tracking-tight text-ink text-[15px]">Jéssica Dumont</span>
+        <span class="ff-mono text-[9px] tracking-[.34em] text-muted uppercase mt-1">Estética Avançada</span>
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <nav class="hidden lg:flex items-center gap-9 text-[13px] font-medium text-ink2">
+      <a href="#sobre" class="nav-link hover:text-gold transition-colors">Sobre</a>
+      <a href="#tratamentos" class="nav-link hover:text-gold transition-colors">Tratamentos</a>
+      <a href="#resultados" class="nav-link hover:text-gold transition-colors">Resultados</a>
+      <a href="#espaco" class="nav-link hover:text-gold transition-colors">O Espaço</a>
+      <a href="#contato" class="nav-link hover:text-gold transition-colors">Contato</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/5531000000000?text=Ol%C3%A1%20Jéssica!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"
+         class="btn-primary hidden sm:inline-flex items-center gap-2 bg-ink text-cream text-[11px] font-semibold uppercase tracking-[.14em] py-3 pl-5 pr-4 rounded-full hover:bg-goldd transition-colors">
+        <span class="shine"></span>
+        Agendar
+        <span class="w-6 h-6 rounded-full bg-cream/15 flex items-center justify-center">
+          <span class="iconify text-[13px]" data-icon="solar:arrow-right-up-linear"></span>
+        </span>
+      </a>
+      <!-- Mobile toggle -->
+      <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-line flex items-center justify-center text-ink" aria-label="Menu">
+        <span class="iconify text-xl" data-icon="solar:hamburger-menu-linear"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="fixed inset-0 z-[99] bg-cream/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 text-2xl font-display font-medium translate-y-[-100%] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)]">
+  <a href="#sobre" class="mob-link text-ink hover:text-gold transition-colors">Sobre</a>
+  <a href="#tratamentos" class="mob-link text-ink hover:text-gold transition-colors">Tratamentos</a>
+  <a href="#resultados" class="mob-link text-ink hover:text-gold transition-colors">Resultados</a>
+  <a href="#espaco" class="mob-link text-ink hover:text-gold transition-colors">O Espaço</a>
+  <a href="#contato" class="mob-link text-ink hover:text-gold transition-colors">Contato</a>
+  <a href="https://wa.me/5531000000000" target="_blank" rel="noopener" class="mob-link mt-4 inline-flex items-center gap-3 bg-gold-grad text-white text-sm uppercase tracking-widest py-4 px-8 rounded-full">Agendar avaliação</a>
+  <button id="menuClose" class="absolute top-6 right-6 w-11 h-11 rounded-full border border-line flex items-center justify-center" aria-label="Fechar">
+    <span class="iconify text-xl" data-icon="solar:close-circle-linear"></span>
+  </button>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative w-full overflow-hidden pt-28 lg:pt-24 lg:h-screen lg:min-h-[760px] flex items-center">
+  <!-- Background grid + beams (desktop) -->
+  <div class="absolute inset-0 z-0 pointer-events-none hidden lg:block">
+    <div class="grid-line-v" style="left:var(--gx-1)"></div>
+    <div class="grid-line-v" style="left:var(--gx-2)"><div class="beam-v" style="animation:beam-v 7s infinite 1s"></div></div>
+    <div class="grid-line-v" style="left:var(--gx-3)"><div class="beam-v" style="animation:beam-v 8s infinite 3.5s"></div></div>
+    <div class="grid-line-v" style="left:var(--gx-4)"></div>
+    <div class="grid-line-h" style="top:20%"></div>
+    <div class="grid-line-h" style="top:78%"><div class="beam-h" style="animation:beam-h 9s infinite 2s"></div></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-[6%] grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-8 items-center">
+
+    <!-- LEFT: copy -->
+    <div class="order-2 lg:order-1 lg:pr-6">
+      <div class="animate-reveal delay-100 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-gold/30 bg-white/50 mb-7">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-60"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+        </span>
+        <span class="ff-mono text-[10px] tracking-[.2em] uppercase text-goldd">Biomedicina Estética • Tricologia</span>
+      </div>
+
+      <h1 class="font-display font-semibold tracking-tightest text-ink leading-[1.02] text-[2.6rem] sm:text-6xl lg:text-[4.1rem] xl:text-[4.6rem]">
+        <span class="block animate-reveal delay-100">Beleza que nasce</span>
+        <span class="block animate-reveal delay-200">do <span class="serif-accent text-gold-gradient pr-1">cuidado</span> em</span>
+        <span class="block animate-reveal delay-300 text-muted">cada detalhe.</span>
+      </h1>
+
+      <p class="animate-reveal delay-400 mt-7 text-[1.05rem] leading-relaxed text-ink2/80 font-light max-w-xl">
+        Estética avançada e tratamentos capilares personalizados, conduzidos pela biomédica
+        <span class="text-ink font-medium">Jéssica Dumont</span> — protocolos exclusivos, diagnóstico criterioso e um acompanhamento verdadeiramente próximo.
+      </p>
+
+      <div class="animate-reveal delay-500 mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <a href="https://wa.me/5531000000000?text=Ol%C3%A1%20Jéssica!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"
+           class="btn-primary group inline-flex items-center justify-center gap-3 bg-gold-grad text-white pl-7 pr-3 py-3.5 rounded-full font-semibold text-[13px] uppercase tracking-[.12em] shadow-lg shadow-gold/25 hover:shadow-xl hover:shadow-gold/30 transition-all">
+          <span class="shine"></span>
+          Agendar avaliação
+          <span class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+            <span class="iconify text-base" data-icon="solar:arrow-right-linear"></span>
+          </span>
+        </a>
+        <a href="#tratamentos" class="group inline-flex items-center justify-center gap-2.5 pl-6 pr-2 py-2 bg-white/60 hover:bg-white border border-line rounded-full transition-all shadow-sm">
+          <span class="text-sm font-medium text-ink2">Conhecer tratamentos</span>
+          <span class="w-9 h-9 bg-champagne rounded-full flex items-center justify-center text-goldd group-hover:bg-gold group-hover:text-white transition-colors">
+            <span class="iconify text-base" data-icon="solar:arrow-down-linear"></span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Trust row -->
+      <div class="animate-reveal delay-700 mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <div class="flex items-center gap-2.5">
+          <span class="iconify text-xl text-gold" data-icon="solar:diploma-verified-linear"></span>
+          <div class="leading-tight">
+            <p class="text-sm font-semibold text-ink">CRBM 17.744</p>
+            <p class="ff-mono text-[10px] text-muted uppercase tracking-wider">Biomédica registrada</p>
+          </div>
+        </div>
+        <div class="w-px h-9 bg-line hidden sm:block"></div>
+        <div class="flex items-center gap-2.5">
+          <span class="iconify text-xl text-gold" data-icon="solar:map-point-linear"></span>
+          <div class="leading-tight">
+            <p class="text-sm font-semibold text-ink">Sete Lagoas — MG</p>
+            <p class="ff-mono text-[10px] text-muted uppercase tracking-wider">Atendimento presencial</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: portrait -->
+    <div class="order-1 lg:order-2 relative">
+      <div class="relative mx-auto max-w-[440px] lg:max-w-none" data-parallax="0.12">
+        <!-- decorative capsule frame -->
+        <div class="absolute -inset-3 sm:-inset-4 rounded-[2.4rem] border border-gold/25 z-0"></div>
+        <div class="relative z-10 rounded-[2.1rem] overflow-hidden shadow-2xl shadow-goldd/20 kb">
+          <img src="briefing/Fotos%20profissionais%20/Z63_0693.jpg" alt="Jéssica Dumont, biomédica esteta" class="w-full h-[440px] sm:h-[560px] lg:h-[68vh] object-cover object-top">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- floating badge: rating -->
+        <div class="float absolute -left-4 sm:-left-8 top-10 z-20 bg-white/85 backdrop-blur-md border border-line rounded-2xl px-4 py-3 shadow-xl shadow-goldd/10">
+          <div class="flex gap-0.5 text-gold mb-1">
+            <span class="iconify text-sm" data-icon="solar:star-bold"></span>
+            <span class="iconify text-sm" data-icon="solar:star-bold"></span>
+            <span class="iconify text-sm" data-icon="solar:star-bold"></span>
+            <span class="iconify text-sm" data-icon="solar:star-bold"></span>
+            <span class="iconify text-sm" data-icon="solar:star-bold"></span>
+          </div>
+          <p class="text-[11px] text-ink2 font-medium leading-tight">Pacientes satisfeitas<br><span class="text-muted font-normal">experiência acolhedora</span></p>
+        </div>
+
+        <!-- floating card: monogram / specialty -->
+        <div class="float-slow absolute -right-3 sm:-right-7 bottom-8 z-20 bg-ink text-cream rounded-2xl px-5 py-4 shadow-2xl shadow-ink/30 max-w-[190px]">
+          <span class="iconify text-2xl text-goldl" data-icon="solar:hairstyle-linear"></span>
+          <p class="mt-2 text-[13px] font-semibold leading-snug">Tricologia & Saúde Capilar</p>
+          <p class="text-[11px] text-cream/60 mt-1 leading-snug">Diagnóstico com tricoscopia e protocolos exclusivos</p>
+        </div>
+
+        <!-- rotating seal -->
+        <div class="hidden sm:flex ring-rotate absolute -top-6 -right-6 z-20 w-20 h-20 items-center justify-center">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <defs><path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"></path></defs>
+            <text fill="#8C6E3A" font-size="9.5" letter-spacing="2.4" font-family="Space Mono, monospace">
+              <textPath href="#circlePath">• ESTÉTICA AVANÇADA • SETE LAGOAS </textPath>
+            </text>
+          </svg>
+          <span class="serif-accent text-gold-gradient text-lg absolute" style="font-style:normal">jd</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="hidden lg:flex flex-col items-center gap-2 absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+    <span class="ff-mono text-[9px] tracking-[.3em] text-muted uppercase">Role</span>
+    <span class="iconify text-lg text-gold animate-bounce" data-icon="solar:double-alt-arrow-down-linear"></span>
+  </div>
+</section>
+
+<!-- ============ MARQUEE / TRUST STRIP ============ -->
+<div class="marquee-wrap relative border-y border-line bg-champagne/40 overflow-hidden py-5">
+  <div class="marquee-track gap-14 items-center text-goldd/80">
+    <!-- repeated twice for seamless loop -->
+    <template id="mq">
+      <span class="flex items-center gap-3 ff-mono text-[12px] tracking-[.18em] uppercase whitespace-nowrap"><span class="iconify text-gold text-base" data-icon="solar:leaf-linear"></span>Mesoterapia Capilar</span>
+      <span class="text-gold/50">✦</span>
+      <span class="flex items-center gap-3 ff-mono text-[12px] tracking-[.18em] uppercase whitespace-nowrap"><span class="iconify text-gold text-base" data-icon="solar:syringe-linear"></span>MMP Capilar</span>
+      <span class="text-gold/50">✦</span>
+      <span class="flex items-center gap-3 ff-mono text-[12px] tracking-[.18em] uppercase whitespace-nowrap"><span class="iconify text-gold text-base" data-icon="solar:magnifer-linear"></span>Tricoscopia</span>
+      <span class="text-gold/50">✦</span>
+      <span class="flex items-center gap-3 ff-mono text-[12px] tracking-[.18em] uppercase whitespace-nowrap"><span class="iconify text-gold text-base" data-icon="solar:face-scan-square-linear"></span>Protocolos Faciais</span>
+      <span class="text-gold/50">✦</span>
+      <span class="flex items-center gap-3 ff-mono text-[12px] tracking-[.18em] uppercase whitespace-nowrap"><span class="iconify text-gold text-base" data-icon="solar:hand-heart-linear"></span>Estética Corporal</span>
+      <span class="text-gold/50">✦</span>
+    </template>
+  </div>
+</div>
+
+<!-- ============ BENEFÍCIOS / DIFERENCIAIS (BENTO) ============ -->
+<section id="beneficios" class="relative z-10 py-24 lg:py-32">
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%]">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <span class="eyebrow">01 / Por que a Jéssica Dumont</span>
+        <h2 class="mt-4 font-display font-semibold tracking-tight text-ink text-4xl lg:text-[3.2rem] leading-[1.05]">
+          Ciência e sensibilidade <span class="serif-accent text-gold-gradient">em equilíbrio</span>
+        </h2>
+      </div>
+      <p class="text-ink2/70 font-light max-w-sm leading-relaxed">
+        Cada protocolo é desenhado a partir de uma avaliação criteriosa — porque resultados reais começam com um diagnóstico honesto.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- big feature card -->
+      <div class="card-lift group md:col-span-2 lg:row-span-2 relative overflow-hidden rounded-2xl border border-line bg-ink text-cream p-8 lg:p-10 flex flex-col justify-between min-h-[340px]" data-aos="fade-up">
+        <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-goldl/10 blur-2xl"></div>
+        <div class="relative z-10">
+          <div class="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center text-goldl mb-6">
+            <span class="iconify text-2xl" data-icon="solar:magnifer-zoom-in-linear"></span>
+          </div>
+          <h3 class="font-display text-2xl font-semibold tracking-tight mb-3">Diagnóstico criterioso</h3>
+          <p class="text-cream/70 font-light leading-relaxed max-w-md">
+            Antes de qualquer procedimento, uma investigação profunda: tricoscopia, análise do couro cabeludo e histórico clínico.
+            Nada de fórmulas prontas — o seu tratamento é único.
+          </p>
+        </div>
+        <div class="relative z-10 mt-8 flex items-center gap-3 text-goldl">
+          <span class="ff-mono text-[11px] tracking-[.2em] uppercase">Avaliação personalizada</span>
+          <div class="flex-1 rule-gold opacity-40"></div>
+        </div>
+      </div>
+
+      <!-- small cards -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-7 shadow-sm hover:shadow-md" data-aos="fade-up" data-aos-delay="80">
+        <div class="h-11 w-11 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-5">
+          <span class="iconify text-xl" data-icon="solar:notebook-linear"></span>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-1.5">Protocolos exclusivos</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed">Planos de tratamento construídos para o seu objetivo, com ciclos e manutenção bem definidos.</p>
+      </div>
+
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-7 shadow-sm hover:shadow-md" data-aos="fade-up" data-aos-delay="160">
+        <div class="h-11 w-11 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-5">
+          <span class="iconify text-xl" data-icon="solar:hand-stars-linear"></span>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-1.5">Acompanhamento próximo</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed">Você não caminha sozinha: evolução monitorada sessão a sessão, com ajustes guiados pela profissional.</p>
+      </div>
+
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-7 shadow-sm hover:shadow-md" data-aos="fade-up" data-aos-delay="80">
+        <div class="h-11 w-11 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-5">
+          <span class="iconify text-xl" data-icon="solar:cup-star-linear"></span>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-1.5">Ambiente premium</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed">Um espaço acolhedor e sofisticado, pensado nos detalhes para você se sentir cuidada de verdade.</p>
+      </div>
+
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-7 shadow-sm hover:shadow-md" data-aos="fade-up" data-aos-delay="160">
+        <div class="h-11 w-11 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-5">
+          <span class="iconify text-xl" data-icon="solar:verified-check-linear"></span>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-1.5">Segurança biomédica</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed">Técnica, biossegurança e embasamento científico em cada procedimento realizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section id="sobre" class="relative z-10 py-24 lg:py-32 bg-champagne/35 border-y border-line overflow-hidden">
+  <div class="blob bg-goldl" style="width:420px;height:420px;top:-10%;right:-8%;opacity:.22"></div>
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%] grid lg:grid-cols-2 gap-14 lg:gap-20 items-center relative z-10">
+
+    <!-- image -->
+    <div class="relative order-2 lg:order-1" data-aos="fade-right">
+      <div class="relative max-w-[460px] mx-auto lg:mx-0" data-parallax="0.08">
+        <div class="absolute -bottom-5 -left-5 w-full h-full rounded-[2rem] border border-gold/30 z-0"></div>
+        <div class="relative z-10 rounded-[1.8rem] overflow-hidden shadow-2xl shadow-goldd/20 kb">
+          <img src="briefing/Fotos%20profissionais%20/Z63_0529.jpg" alt="Jéssica Dumont" class="w-full h-[520px] object-cover object-top">
+        </div>
+        <!-- signature plaque -->
+        <div class="absolute z-20 -right-4 lg:-right-8 bottom-10 bg-white/90 backdrop-blur-md border border-line rounded-2xl px-6 py-5 shadow-xl shadow-goldd/10 text-center">
+          <p class="serif-accent text-gold-gradient text-3xl leading-none" style="font-style:normal">Jéssica Dumont</p>
+          <p class="ff-mono text-[9px] tracking-[.28em] uppercase text-muted mt-2">Biomédica Esteta • CRBM 17.744</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- text -->
+    <div class="order-1 lg:order-2" data-aos="fade-left">
+      <span class="eyebrow">02 / Sobre</span>
+      <h2 class="mt-4 font-display font-semibold tracking-tight text-ink text-4xl lg:text-[3.2rem] leading-[1.06]">
+        Uma referência em <span class="serif-accent text-gold-gradient">tricologia</span> e estética avançada
+      </h2>
+      <p class="mt-7 text-ink2/80 font-light leading-relaxed text-[1.05rem]">
+        Jéssica Dumont é biomédica esteta, especializada no cuidado do couro cabeludo e dos fios.
+        Une o rigor da ciência à delicadeza do olhar humano para tratar a alopecia androgenética,
+        a miniaturização capilar e devolver a autoestima de cada paciente.
+      </p>
+      <p class="mt-4 text-ink2/70 font-light leading-relaxed">
+        Seu trabalho nasce de um princípio simples e presente em cada atendimento:
+        <span class="serif-accent text-goldd text-lg">“aqui tem Deus em cada detalhe.”</span>
+      </p>
+
+      <!-- credentials -->
+      <div class="mt-9 grid grid-cols-2 gap-x-6 gap-y-5">
+        <div class="flex items-start gap-3">
+          <span class="iconify text-xl text-gold mt-0.5" data-icon="solar:diploma-linear"></span>
+          <div><p class="text-sm font-semibold text-ink">Biomedicina Estética</p><p class="text-xs text-muted">Formação e atualização contínua</p></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="iconify text-xl text-gold mt-0.5" data-icon="solar:microscope-linear"></span>
+          <div><p class="text-sm font-semibold text-ink">Especialista em Tricologia</p><p class="text-xs text-muted">Diagnóstico e tratamento capilar</p></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="iconify text-xl text-gold mt-0.5" data-icon="solar:shield-check-linear"></span>
+          <div><p class="text-sm font-semibold text-ink">Biossegurança</p><p class="text-xs text-muted">Protocolos técnicos rigorosos</p></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="iconify text-xl text-gold mt-0.5" data-icon="solar:heart-linear"></span>
+          <div><p class="text-sm font-semibold text-ink">Cuidado humanizado</p><p class="text-xs text-muted">Atendimento próximo e acolhedor</p></div>
+        </div>
+      </div>
+
+      <a href="#contato" class="mt-10 inline-flex items-center gap-2 text-goldd font-semibold text-sm uppercase tracking-[.12em] group">
+        Agende um horário
+        <span class="iconify text-base group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRATAMENTOS ============ -->
+<section id="tratamentos" class="relative z-10 py-24 lg:py-32">
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%]">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <span class="eyebrow">03 / Tratamentos</span>
+      <h2 class="mt-4 font-display font-semibold tracking-tight text-ink text-4xl lg:text-[3.2rem] leading-[1.06]">
+        Protocolos que cuidam da sua <span class="serif-accent text-gold-gradient">essência</span>
+      </h2>
+      <p class="mt-5 text-ink2/70 font-light leading-relaxed">
+        Da saúde capilar à estética facial e corporal — tecnologia, técnica e personalização em cada procedimento.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- 1 flagship -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-gold/25 bg-white p-8 shadow-sm hover:shadow-lg hover:border-gold/40 flex flex-col" data-aos="fade-up">
+        <div class="absolute top-5 right-5 ff-mono text-[10px] tracking-widest uppercase text-white bg-gold-grad px-2.5 py-1 rounded-full">Destaque</div>
+        <div class="h-13 w-13 rounded-xl bg-gold-grad flex items-center justify-center text-white mb-6 p-3">
+          <span class="iconify text-2xl" data-icon="solar:hairstyle-linear"></span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-ink mb-2 tracking-tight">Tricologia & Saúde Capilar</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed flex-1">Diagnóstico com tricoscopia e tratamento da alopecia androgenética e miniaturização dos fios, com protocolo personalizado.</p>
+        <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
+          <span class="ff-mono text-[10px] uppercase tracking-wider text-muted">Avaliação inicial</span>
+          <span class="iconify text-lg text-gold group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-8 shadow-sm hover:shadow-md flex flex-col" data-aos="fade-up" data-aos-delay="80">
+        <div class="h-13 w-13 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-6 p-3">
+          <span class="iconify text-2xl" data-icon="solar:leaf-linear"></span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-ink mb-2 tracking-tight">Mesoterapia Capilar</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed flex-1">Microinfusão de ativos diretamente no couro cabeludo para nutrir, fortalecer e estimular o crescimento dos fios.</p>
+        <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
+          <span class="ff-mono text-[10px] uppercase tracking-wider text-muted">Sessões periódicas</span>
+          <span class="iconify text-lg text-gold group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-8 shadow-sm hover:shadow-md flex flex-col" data-aos="fade-up" data-aos-delay="160">
+        <div class="h-13 w-13 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-6 p-3">
+          <span class="iconify text-2xl" data-icon="solar:syringe-linear"></span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-ink mb-2 tracking-tight">MMP Capilar</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed flex-1">Microagulhamento com drug delivery que potencializa a absorção dos ativos e a resposta do couro cabeludo.</p>
+        <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
+          <span class="ff-mono text-[10px] uppercase tracking-wider text-muted">Alta performance</span>
+          <span class="iconify text-lg text-gold group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-8 shadow-sm hover:shadow-md flex flex-col" data-aos="fade-up" data-aos-delay="80">
+        <div class="h-13 w-13 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-6 p-3">
+          <span class="iconify text-2xl" data-icon="solar:face-scan-square-linear"></span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-ink mb-2 tracking-tight">Protocolos Faciais</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed flex-1">Rejuvenescimento, viço e uniformização da pele com tecnologias e ativos de última geração.</p>
+        <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
+          <span class="ff-mono text-[10px] uppercase tracking-wider text-muted">Pele saudável</span>
+          <span class="iconify text-lg text-gold group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl border border-line bg-white/60 hover:bg-white p-8 shadow-sm hover:shadow-md flex flex-col" data-aos="fade-up" data-aos-delay="160">
+        <div class="h-13 w-13 rounded-xl bg-champagne flex items-center justify-center text-goldd mb-6 p-3">
+          <span class="iconify text-2xl" data-icon="solar:hand-heart-linear"></span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-ink mb-2 tracking-tight">Estética Corporal</h3>
+        <p class="text-sm text-ink2/70 leading-relaxed flex-1">Tratamentos avançados que valorizam o corpo com resultados naturais e progressivos.</p>
+        <div class="mt-6 pt-4 border-t border-line flex items-center justify-between">
+          <span class="ff-mono text-[10px] uppercase tracking-wider text-muted">Bem-estar</span>
+          <span class="iconify text-lg text-gold group-hover:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+        </div>
+      </div>
+
+      <!-- 6 CTA card -->
+      <div class="card-lift group relative overflow-hidden rounded-2xl bg-ink text-cream p-8 shadow-md flex flex-col justify-between" data-aos="fade-up" data-aos-delay="240">
+        <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-goldl/10 blur-2xl"></div>
+        <div class="relative z-10">
+          <div class="h-13 w-13 rounded-xl bg-white/10 flex items-center justify-center text-goldl mb-6 p-3">
+            <span class="iconify text-2xl" data-icon="solar:calendar-mark-linear"></span>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-2 tracking-tight">Não sabe por onde começar?</h3>
+          <p class="text-sm text-cream/70 leading-relaxed">Agende uma avaliação e receba um plano personalizado para o seu caso.</p>
+        </div>
+        <a href="https://wa.me/5531000000000" target="_blank" rel="noopener" class="relative z-10 mt-6 inline-flex items-center gap-2 text-goldl font-semibold text-sm uppercase tracking-[.12em] group/btn">
+          Falar no WhatsApp
+          <span class="iconify text-base group-hover/btn:translate-x-1 transition-transform" data-icon="solar:arrow-right-linear"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTADOS / STATS + DEPOIMENTOS ============ -->
+<section id="resultados" class="relative z-10 py-24 lg:py-32 bg-ink text-cream overflow-hidden">
+  <div class="blob bg-goldl" style="width:500px;height:500px;top:-15%;left:-10%;opacity:.12"></div>
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%] relative z-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <span class="eyebrow" style="color:#D4B87E">04 / Resultados</span>
+      <h2 class="mt-4 font-display font-semibold tracking-tight text-4xl lg:text-[3.2rem] leading-[1.06]">
+        Confiança que se traduz em <span class="serif-accent text-gold-gradient">histórias reais</span>
+      </h2>
+    </div>
+
+    <!-- stats -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 border-y border-white/10 py-12 mb-16">
+      <div class="text-center lg:text-left group" data-aos="fade-up">
+        <div class="font-display text-4xl lg:text-5xl font-semibold tracking-tight text-cream"><span class="counter" data-target="1200">0</span><span class="text-goldl">+</span></div>
+        <div class="h-0.5 w-10 bg-white/20 my-3 mx-auto lg:mx-0 group-hover:w-20 group-hover:bg-goldl transition-all duration-700"></div>
+        <p class="text-sm text-cream/60">Atendimentos realizados</p>
+      </div>
+      <div class="text-center lg:text-left group" data-aos="fade-up" data-aos-delay="100">
+        <div class="font-display text-4xl lg:text-5xl font-semibold tracking-tight text-cream"><span class="counter" data-target="98">0</span><span class="text-goldl">%</span></div>
+        <div class="h-0.5 w-10 bg-white/20 my-3 mx-auto lg:mx-0 group-hover:w-20 group-hover:bg-goldl transition-all duration-700"></div>
+        <p class="text-sm text-cream/60">Índice de satisfação</p>
+      </div>
+      <div class="text-center lg:text-left group" data-aos="fade-up" data-aos-delay="200">
+        <div class="font-display text-4xl lg:text-5xl font-semibold tracking-tight text-cream"><span class="counter" data-target="6">0</span><span class="text-goldl">+</span></div>
+        <div class="h-0.5 w-10 bg-white/20 my-3 mx-auto lg:mx-0 group-hover:w-20 group-hover:bg-goldl transition-all duration-700"></div>
+        <p class="text-sm text-cream/60">Anos de experiência</p>
+      </div>
+      <div class="text-center lg:text-left group" data-aos="fade-up" data-aos-delay="300">
+        <div class="font-display text-4xl lg:text-5xl font-semibold tracking-tight text-cream ff-mono">17.744</div>
+        <div class="h-0.5 w-10 bg-white/20 my-3 mx-auto lg:mx-0 group-hover:w-20 group-hover:bg-goldl transition-all duration-700"></div>
+        <p class="text-sm text-cream/60">Registro CRBM</p>
+      </div>
+    </div>
+
+    <!-- testimonials swiper -->
+    <div class="swiper testimonialSwiper" data-aos="fade-up">
+      <div class="swiper-wrapper pb-14">
+        <!-- card -->
+        <div class="swiper-slide h-auto">
+          <div class="h-full bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm flex flex-col">
+            <div class="flex gap-0.5 text-goldl mb-5">
+              <span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span>
+            </div>
+            <p class="text-cream/85 font-light leading-relaxed flex-1">“Fui super bem acolhida desde a avaliação. A Jéssica explica cada etapa e já senti diferença no meu couro cabeludo. Profissional impecável.”</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="w-10 h-10 rounded-full bg-gold-grad flex items-center justify-center text-white font-display font-semibold">C</span>
+              <div><p class="text-sm font-semibold text-cream">Cheila R.</p><p class="text-xs text-cream/50">Tratamento capilar</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide h-auto">
+          <div class="h-full bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm flex flex-col">
+            <div class="flex gap-0.5 text-goldl mb-5">
+              <span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span>
+            </div>
+            <p class="text-cream/85 font-light leading-relaxed flex-1">“O espaço é lindo e a atenção nos detalhes faz toda a diferença. Me sinto segura e cuidada em cada sessão. Recomendo de olhos fechados.”</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="w-10 h-10 rounded-full bg-gold-grad flex items-center justify-center text-white font-display font-semibold">R</span>
+              <div><p class="text-sm font-semibold text-cream">Rosane M.</p><p class="text-xs text-cream/50">Estética facial</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide h-auto">
+          <div class="h-full bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm flex flex-col">
+            <div class="flex gap-0.5 text-goldl mb-5">
+              <span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span>
+            </div>
+            <p class="text-cream/85 font-light leading-relaxed flex-1">“Comecei o tratamento para alopecia sem muita esperança e hoje vejo meus fios voltando. A conduta é séria, científica e humana.”</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="w-10 h-10 rounded-full bg-gold-grad flex items-center justify-center text-white font-display font-semibold">S</span>
+              <div><p class="text-sm font-semibold text-cream">Samuel A.</p><p class="text-xs text-cream/50">Tricologia</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide h-auto">
+          <div class="h-full bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm flex flex-col">
+            <div class="flex gap-0.5 text-goldl mb-5">
+              <span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span><span class="iconify" data-icon="solar:star-bold"></span>
+            </div>
+            <p class="text-cream/85 font-light leading-relaxed flex-1">“Atendimento nota mil! Além do resultado, o carinho e o cuidado da Jéssica tornam a experiência única. Virou meu momento de autocuidado.”</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="w-10 h-10 rounded-full bg-gold-grad flex items-center justify-center text-white font-display font-semibold">L</span>
+              <div><p class="text-sm font-semibold text-cream">Luana F.</p><p class="text-xs text-cream/50">Estética avançada</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESPAÇO / GALERIA ============ -->
+<section id="espaco" class="relative z-10 py-24 lg:py-32">
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%]">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <span class="eyebrow">05 / O Espaço</span>
+        <h2 class="mt-4 font-display font-semibold tracking-tight text-ink text-4xl lg:text-[3.2rem] leading-[1.05]">
+          Um ambiente pensado <span class="serif-accent text-gold-gradient">em cada detalhe</span>
+        </h2>
+      </div>
+      <p class="text-ink2/70 font-light max-w-sm leading-relaxed">
+        Conforto, sofisticação e biossegurança se encontram em um espaço criado para acolher você.
+      </p>
+    </div>
+
+    <!-- gallery swiper -->
+    <div class="swiper gallerySwiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3071.jpg" alt="Sala de atendimento" class="w-full h-full object-cover"></div></div>
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3202.jpg" alt="Detalhe do espaço" class="w-full h-full object-cover"></div></div>
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3149.jpg" alt="Aqui tem Deus em cada detalhe" class="w-full h-full object-cover"></div></div>
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3161.jpg" alt="Ambiente do espaço" class="w-full h-full object-cover"></div></div>
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3174.jpg" alt="Ambiente do espaço" class="w-full h-full object-cover"></div></div>
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3239.jpg" alt="Ambiente do espaço" class="w-full h-full object-cover"></div></div>
+        <div class="swiper-slide"><div class="kb rounded-2xl overflow-hidden border border-line shadow-sm h-[300px] lg:h-[440px]"><img src="briefing/SALA/Z52_3125.jpg" alt="Detalhe decorativo" class="w-full h-full object-cover"></div></div>
+      </div>
+      <div class="flex items-center justify-between mt-8">
+        <p class="ff-mono text-[11px] tracking-widest uppercase text-muted">Arraste para explorar →</p>
+        <div class="flex gap-3">
+          <button class="gal-prev w-11 h-11 rounded-full border border-line flex items-center justify-center text-goldd hover:bg-gold hover:text-white hover:border-gold transition-colors"><span class="iconify text-lg" data-icon="solar:arrow-left-linear"></span></button>
+          <button class="gal-next w-11 h-11 rounded-full border border-line flex items-center justify-center text-goldd hover:bg-gold hover:text-white hover:border-gold transition-colors"><span class="iconify text-lg" data-icon="solar:arrow-right-linear"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="contato" class="relative z-10 py-20 lg:py-28">
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%]">
+    <div class="relative overflow-hidden rounded-[2.2rem] bg-gold-grad px-8 py-14 lg:px-20 lg:py-20 text-center" data-aos="zoom-in">
+      <!-- decorative rings -->
+      <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-white/20"></div>
+      <div class="absolute -bottom-28 -right-16 w-96 h-96 rounded-full border border-white/15"></div>
+      <div class="absolute -bottom-20 -right-8 w-64 h-64 rounded-full border border-white/10"></div>
+
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <span class="ff-mono text-[11px] tracking-[.26em] uppercase text-white/80">Vamos começar?</span>
+        <h2 class="mt-5 font-display font-semibold tracking-tight text-white text-4xl lg:text-[3.4rem] leading-[1.05]">
+          Sua transformação começa com uma <span class="serif-accent">avaliação</span>
+        </h2>
+        <p class="mt-6 text-white/85 font-light leading-relaxed max-w-lg mx-auto">
+          Agende agora e descubra o protocolo ideal para você, com a segurança de quem une ciência e cuidado em cada detalhe.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://wa.me/5531000000000?text=Ol%C3%A1%20Jéssica!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"
+             class="btn-primary group inline-flex items-center gap-3 bg-ink text-cream pl-7 pr-3 py-4 rounded-full font-semibold text-[13px] uppercase tracking-[.12em] shadow-xl hover:bg-black transition-colors">
+            <span class="shine"></span>
+            <span class="iconify text-lg text-goldl" data-icon="solar:chat-round-call-linear"></span>
+            Agendar pelo WhatsApp
+            <span class="w-9 h-9 rounded-full bg-cream/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+              <span class="iconify text-base" data-icon="solar:arrow-right-linear"></span>
+            </span>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2.5 bg-white/15 hover:bg-white/25 border border-white/30 text-white pl-6 pr-6 py-4 rounded-full font-semibold text-[13px] uppercase tracking-[.12em] transition-colors backdrop-blur-sm">
+            <i class="fa-brands fa-instagram text-base"></i>
+            Ver no Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative z-10 bg-ink text-cream pt-20 pb-10 overflow-hidden">
+  <div class="blob bg-goldl" style="width:400px;height:400px;bottom:-30%;right:-5%;opacity:.1"></div>
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-[6%] relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-12 pb-14 border-b border-white/10">
+
+      <!-- brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="flex items-center justify-center w-12 h-12 rounded-full border border-goldl/40">
+            <span class="serif-accent text-2xl text-gold-gradient" style="font-style:normal;letter-spacing:-.04em">jd</span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display font-semibold text-lg">Jéssica Dumont</span>
+            <span class="ff-mono text-[9px] tracking-[.32em] text-cream/50 uppercase mt-1">Estética Avançada</span>
+          </span>
+        </div>
+        <p class="text-cream/60 font-light leading-relaxed max-w-xs text-sm">
+          Biomedicina estética e tricologia com protocolos personalizados. Ciência, arte e delicadeza em cada detalhe.
+        </p>
+        <div class="flex gap-3 mt-6">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-cream/80 hover:bg-gold-grad hover:text-white hover:border-transparent transition-all"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5531000000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-cream/80 hover:bg-gold-grad hover:text-white hover:border-transparent transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:contato@jessicadumont.com.br" aria-label="E-mail" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-cream/80 hover:bg-gold-grad hover:text-white hover:border-transparent transition-all"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <!-- nav -->
+      <div>
+        <p class="ff-mono text-[10px] tracking-[.24em] uppercase text-goldl mb-5">Navegação</p>
+        <ul class="space-y-3 text-sm text-cream/70">
+          <li><a href="#sobre" class="hover:text-goldl transition-colors">Sobre</a></li>
+          <li><a href="#tratamentos" class="hover:text-goldl transition-colors">Tratamentos</a></li>
+          <li><a href="#resultados" class="hover:text-goldl transition-colors">Resultados</a></li>
+          <li><a href="#espaco" class="hover:text-goldl transition-colors">O Espaço</a></li>
+        </ul>
+      </div>
+
+      <!-- treatments -->
+      <div>
+        <p class="ff-mono text-[10px] tracking-[.24em] uppercase text-goldl mb-5">Tratamentos</p>
+        <ul class="space-y-3 text-sm text-cream/70">
+          <li><a href="#tratamentos" class="hover:text-goldl transition-colors">Tricologia</a></li>
+          <li><a href="#tratamentos" class="hover:text-goldl transition-colors">Mesoterapia Capilar</a></li>
+          <li><a href="#tratamentos" class="hover:text-goldl transition-colors">MMP Capilar</a></li>
+          <li><a href="#tratamentos" class="hover:text-goldl transition-colors">Protocolos Faciais</a></li>
+        </ul>
+      </div>
+
+      <!-- contact -->
+      <div>
+        <p class="ff-mono text-[10px] tracking-[.24em] uppercase text-goldl mb-5">Contato</p>
+        <ul class="space-y-4 text-sm text-cream/70">
+          <li class="flex items-start gap-3"><span class="iconify text-lg text-goldl mt-0.5" data-icon="solar:map-point-linear"></span> Sete Lagoas — Minas Gerais</li>
+          <li class="flex items-start gap-3"><span class="iconify text-lg text-goldl mt-0.5" data-icon="solar:phone-linear"></span> <a href="https://wa.me/5531000000000" class="hover:text-goldl transition-colors">WhatsApp — agende online</a></li>
+          <li class="flex items-start gap-3"><span class="iconify text-lg text-goldl mt-0.5" data-icon="solar:clock-circle-linear"></span> Seg a Sex • horários agendados</li>
+          <li class="flex items-start gap-3"><span class="iconify text-lg text-goldl mt-0.5" data-icon="solar:diploma-verified-linear"></span> CRBM 17.744</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8">
+      <p class="text-xs text-cream/40 ff-mono">© 2026 Jéssica Dumont — Estética Avançada. Todos os direitos reservados.</p>
+      <p class="text-xs text-cream/40 ff-mono">Feito com <span class="text-goldl">♥</span> e ciência.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a href="https://wa.me/5531000000000?text=Ol%C3%A1%20Jéssica!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"
+   class="wa-fab fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:scale-110 transition-transform" aria-label="WhatsApp">
+  <span class="absolute inset-0 rounded-full bg-[#25D366]" style="animation:pulse-ring 2.4s cubic-bezier(0,0,.2,1) infinite"></span>
+  <i class="fa-brands fa-whatsapp text-2xl relative z-10"></i>
+</a>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---------- AOS ---------- */
+  AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true, offset: 80 });
+
+  /* ---------- MARQUEE (duplicate template content x2) ---------- */
+  (function(){
+    const track = document.querySelector('.marquee-track');
+    const tpl = document.getElementById('mq');
+    if(track && tpl){
+      const frag = tpl.content.cloneNode(true);
+      const frag2 = tpl.content.cloneNode(true);
+      track.appendChild(frag);
+      track.appendChild(frag2);
+      if(window.Iconify) Iconify.scan(track);
+    }
+  })();
+
+  /* ---------- NAV scroll state ---------- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 30) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- MOBILE MENU ---------- */
+  const menu = document.getElementById('mobileMenu');
+  const open = () => menu.style.transform = 'translateY(0)';
+  const close = () => menu.style.transform = 'translateY(-100%)';
+  document.getElementById('menuBtn').addEventListener('click', open);
+  document.getElementById('menuClose').addEventListener('click', close);
+  document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', close));
+
+  /* ---------- GALLERY SWIPER ---------- */
+  new Swiper('.gallerySwiper', {
+    slidesPerView: 1.15, spaceBetween: 20, grabCursor: true, loop: true,
+    navigation: { nextEl: '.gal-next', prevEl: '.gal-prev' },
+    breakpoints: { 640: { slidesPerView: 2, spaceBetween: 22 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }
+  });
+
+  /* ---------- TESTIMONIALS SWIPER ---------- */
+  new Swiper('.testimonialSwiper', {
+    slidesPerView: 1, spaceBetween: 22, grabCursor: true, loop: true,
+    autoplay: { delay: 4200, disableOnInteraction: false },
+    pagination: { el: '.testimonialSwiper .swiper-pagination', clickable: true },
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+  });
+
+  /* ---------- GSAP: parallax ---------- */
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const amt = parseFloat(el.getAttribute('data-parallax')) || 0.1;
+      gsap.to(el, {
+        yPercent: -amt * 100,
+        ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 1 }
+      });
+    });
+
+    /* counters */
+    document.querySelectorAll('.counter').forEach(el => {
+      const target = +el.getAttribute('data-target');
+      const obj = { val: 0 };
+      ScrollTrigger.create({
+        trigger: el, start: 'top 85%', once: true,
+        onEnter: () => gsap.to(obj, {
+          val: target, duration: 2, ease: 'power2.out',
+          onUpdate: () => {
+            el.textContent = target >= 1000
+              ? Math.floor(obj.val).toLocaleString('pt-BR')
+              : Math.floor(obj.val);
+          }
+        })
+      });
+    });
+  }
+});
+</script>
+</body>
+</html>
